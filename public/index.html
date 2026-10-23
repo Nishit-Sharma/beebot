@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BeeBot</title>
+    <link rel="icon" href="/beebot.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to conversation</a>
+    <div class="layout">
+      <aside>
+        <a class="brand" href="/"
+          ><span data-icon="mark" class="brand-mark"></span
+          ><span>BeeBot</span></a
+        ><button id="new-work" class="new-chat">
+          <span data-icon="plus"></span> New task
+        </button>
+        <nav aria-label="Main">
+          <button data-page="companion" class="active"><span data-icon="mark"></span> BeeBot</button>
+          <button data-page="inbox">
+            <span data-icon="chat"></span> From Bee</button
+          ><button data-page="work">
+            <span data-icon="work"></span> Tasks
+            <span id="count">0</span></button
+          ><button data-page="memory">
+            <span data-icon="memory"></span> Memory</button
+          ><button data-page="connections">
+            <span data-icon="connections"></span> Connections
+          </button>
+        </nav>
+        <div class="recents">
+          <p class="sidebar-label">Tasks</p>
+          <div id="conversation-list"></div>
+          <details class="sidebar-examples" data-development-only hidden inert><summary>Developer demos</summary><button data-page="work" class="legacy-nav">
+            Legacy reminder demo
+          </button>
+          <p class="sidebar-label">Legacy demo requests</p>
+          <div id="sidebar-tasks"></div></details>
+        </div>
+        <div class="aside-bottom">
+          <span class="status-dot"></span> On this Mac
+          <p>Work needs this Mac awake.</p>
+        </div>
+      </aside>
+      <main id="main">
+        <header>
+          <div>
+            <h1 id="page-title">BeeBot</h1>
+            <span id="header-subtitle"></span>
+          </div>
+          <details id="mobile-history">
+            <summary>Tasks</summary>
+            <div id="mobile-conversation-list"></div>
+          </details>
+        </header>
+        <span
+          id="conversation-announcement"
+          class="sr-only"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></span>
+        <div id="error" role="alert" hidden></div>
+        <section id="inbox-page" hidden>
+          <div class="page-content bee-inbox">
+            <div class="inbox-heading">
+              <h2>Pick up where you left off.</h2>
+              <p>
+                Choose a Bee conversation to turn into a task.
+              </p>
+            </div>
+            <div class="inbox-toolbar" data-development-only hidden inert>
+              <button id="bee-replay" class="secondary">Replay Bee example · simulated</button>
+              <button id="bee-mcp-connect" class="quiet">Connect local Bee MCP</button>
+            </div>
+            <p id="inbox-connection" class="subtle">
+              Bee is not connected. No device capture verified.
+            </p>
+            <div id="bee-read-controls">
+              <button id="bee-list-recent" class="secondary">
+                Choose a conversation
+              </button>
+              <div id="bee-recent-options"></div>
+              <details>
+                <summary>Use a known conversation ID</summary>
+                <label for="bee-conversation-id"
+                  >Conversation ID from Bee</label
+                ><input
+                  id="bee-conversation-id"
+                  inputmode="numeric"
+                  pattern="[0-9]+"
+                  placeholder="One chosen conversation"
+                /><button id="bee-read" class="secondary">
+                  Read this conversation from Bee
+                </button>
+                <p class="subtle">
+                  Uses the official Bee CLI library and existing login. No broad
+                  history import.
+                </p>
+              </details>
+            </div>
+            <div id="bee-source-list"></div>
+            <div id="inbox-archive"></div>
+            <p class="subtle">Only context you select can start a task.</p>
+          </div>
+        </section>
+        <section id="companion-page">
+          <div class="chat-scroll">
+            <article id="conversation-detail"></article>
+          </div>
+          <form id="conversation-form">
+            <label class="sr-only" for="conversation-input"
+              >Message BeeBot</label
+            ><textarea
+              id="conversation-input"
+              aria-description="Enter to send. Shift+Enter for a new line."
+              title="Enter to send. Shift+Enter for a new line."
+              maxlength="8192"
+              required
+              rows="1"
+              placeholder="Message BeeBot…"
+            ></textarea>
+            <div class="composer-tools">
+              <details class="composer-options">
+                <summary aria-label="Context and connection options"><span data-icon="plus"></span><span>Context</span></summary>
+                <div class="composer-menu">
+                  <label for="conversation-memory">Saved context</label><select id="conversation-memory" aria-describedby="conversation-memory-help"><option value="">Choose context</option></select>
+                  <p id="conversation-memory-help" class="subtle"></p>
+                  <label class="check new-choice" hidden><input type="checkbox" id="conversation-new" /> New conversation</label>
+                  <p id="conversation-mode" class="subtle">GPT-6 Luna · not connected</p>
+                  <p id="connection" class="subtle">Connected to this Mac</p>
+                </div>
+              </details>
+              <button class="send" aria-label="Send message"><span data-icon="send"></span></button>
+            </div>
+          </form>
+        </section>
+        <section id="work-page" hidden>
+          <div class="page-content">
+            <div id="ownership-list"></div>
+            <details class="legacy-demo" data-development-only hidden inert>
+              <summary>Legacy reminder demo · simulated inputs</summary>
+              <div class="intro">
+                <h2>Test a software requirement</h2>
+                <button id="sample" class="secondary">
+                  Replay reminder sample · simulated
+                </button>
+              </div>
+              <form id="new-request">
+                <label for="request">Software requirement</label
+                ><textarea
+                  id="request"
+                  rows="2"
+                  required
+                  maxlength="8192"
+                  placeholder="Describe the behavior you want…"
+                ></textarea>
+                <div class="composer-bottom">
+                  <label class="provider-choice"
+                    ><input id="use-codex" type="checkbox" /> ChatGPT
+                    interpretation
+                    <small id="legacy-provider-hint">connect first</small></label
+                  ><button class="primary">Review request</button>
+                </div>
+                <p class="subtle">
+                  Legacy reminder recipe. Generated pure-policy workflows are
+                  available in Chat.
+                </p>
+              </form>
+              <div class="work-area">
+                <section class="task-list" aria-label="Your requests">
+                  <div class="section-heading">
+                    <h2>Requests</h2>
+                    <span id="task-total">0</span>
+                  </div>
+                  <div id="tasks"></div>
+                </section>
+                <article id="detail" aria-live="polite"></article>
+              </div>
+            </details>
+          </div>
+        </section>
+        <section id="memory-page" hidden>
+          <div class="page-content">
+            <h2>Saved context</h2>
+            <p class="page-description">
+              Context you choose to keep for future tasks. You can edit it, set an expiry or remove it.
+            </p>
+            <div id="memories"></div>
+          </div>
+        </section>
+        <section id="connections-page" hidden>
+          <div class="page-content">
+            <h2>Connections</h2>
+            <p class="page-description">Choose the context and model BeeBot can use.</p>
+            <div class="connection">
+              <div class="connection-icon" data-icon="mark"></div>
+              <div>
+                <h3>Bee</h3>
+                <p>Bring in a conversation recorded and processed by Bee.</p>
+                <div class="actions"><button data-page="inbox" class="secondary">Choose a Bee conversation</button></div>
+                <details class="connection-options"><summary>Background context</summary>
+                  <label class="check"><input type="checkbox" id="bee-discovery" />Watch for new Bee conversations</label>
+                  <p class="subtle">Off by default. Checks up to five recent conversations each minute into this local inbox. No task or model call starts automatically.</p>
+                  <p id="bee-status">Live updates are off.</p>
+                  <p id="bee-stream-help" class="subtle">Choose a Bee conversation and confirm Follow before starting live updates.</p>
+                  <div class="actions"><button id="start-bee" class="secondary" aria-describedby="bee-stream-help" disabled>Start live updates</button><button id="stop-bee" class="quiet" disabled>Stop live updates</button></div>
+                  <p class="subtle">Speech is context, not permission. You still choose what becomes a task.</p>
+                  <div id="captures"></div>
+                </details>
+                <details class="connection-options"><summary>Recover a selected excerpt</summary>
+                  <p>Paste context you selected from a Bee sync snapshot. You will confirm it before model sharing.</p>
+                  <label for="recovered-text">Selected excerpt</label><textarea id="recovered-text" maxlength="8192"></textarea><button id="recover" class="secondary">Review excerpt</button>
+                </details>
+              </div>
+            </div>
+            <div class="connection">
+              <div class="connection-icon" data-icon="connections"></div>
+              <div>
+                <h3>ChatGPT</h3>
+                <p id="codex-status">Not connected</p>
+                <p>GPT-6 Luna prepares your private drafts and plans.</p>
+                <button id="connect-codex" class="primary">Use existing Codex connection</button>
+                <div id="login-link"></div>
+                <details class="connection-options"><summary>Access and limits</summary><p>Uses your existing Codex sign-in and subscription limits. The proposal model has no shell, browser or connected-app tools. Connection alone does not verify a model response.</p><small id="provider-hint" hidden></small></details>
+              </div>
+            </div>
+            <details class="capability-details"><summary>Advanced diagnostics</summary>
+              <h3>Background health</h3><p id="supervisor-status"></p>
+              <h3>Available actions and limits</h3><div id="capability-list"></div>
+            </details>
+          </div>
+        </section>
+      </main>
+    </div>
+    <dialog
+      id="confirm-dialog"
+      aria-labelledby="dialog-title"
+      aria-describedby="dialog-copy"
+    >
+      <form method="dialog">
+        <h2 id="dialog-title">Review connection</h2>
+        <p id="dialog-copy"></p>
+        <div class="actions">
+          <button value="cancel" class="secondary">Cancel</button
+          ><button value="yes" class="primary">Continue</button>
+        </div>
+      </form>
+    </dialog>
+    <script type="module" src="/app.mjs"></script>
+  </body>
+</html>

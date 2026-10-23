@@ -1,0 +1,37 @@
+{
+  "purpose": "Explicit curated screenshot allowlist for README only; no runtime changes",
+  "basePublishedCommit": "ae778ca6f2a36459e1c011a4e83065bf4759bdb6",
+  "baseRuntimeSourceHash": "1ca88d35b2ccec434048fcd27b27e672fe4fab58d835888a3811a08501c09748",
+  "sourceHashWithReadme": "aec22dfc20f71182e5d07f53dab58b68ec71b47d7715bd6a44e19456811ba9b0",
+  "evidenceSet": "Approved BeeBot synthetic offline UI captures, 2026-10-23 01:03 local file timestamps; no dictation UI",
+  "files": [
+    {
+      "path": "screenshots/task-review-desktop.png",
+      "sha256": "fb0009b0caeca9dff7d0b58d9c0bc7dcf8035cfc6ac243973a0f0692661bf33e",
+      "width": 1440,
+      "height": 1000,
+      "kind": "synthetic offline demo; fake transports; no live account, device or model call"
+    },
+    {
+      "path": "screenshots/selected-context-desktop.png",
+      "sha256": "5166753208b1ba41edec31614ef4a18f74f9f63f074e033fc5fa60242e766630",
+      "width": 1440,
+      "height": 1000,
+      "kind": "synthetic offline demo; fake transports; no live account, device or model call"
+    },
+    {
+      "path": "screenshots/saved-context-desktop.png",
+      "sha256": "9d7afd8ba205104f97e31dc9f5e1842317c302e23c2da3558437063bff387c71",
+      "width": 1440,
+      "height": 1000,
+      "kind": "synthetic offline demo; fake transports; no live account, device or model call"
+    },
+    {
+      "path": "screenshots/accepted-task-mobile.png",
+      "sha256": "785a8bf71b5fee4991c9ef375585b0fd8fa179de6c099e81457d08c602c464f3",
+      "width": 390,
+      "height": 844,
+      "kind": "synthetic offline demo; fake transports; no live account, device or model call"
+    }
+  ]
+}

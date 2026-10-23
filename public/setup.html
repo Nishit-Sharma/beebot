@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><title>Watch test guide</title
+  ><link rel="stylesheet" href="/setup.css" />
+  <main>
+    <a href="/">← Back to Companion</a>
+    <h1>Test Bee on your Watch</h1>
+    <p>Prepared for a connection test; real Watch/login and end-to-end model testing remain unverified.</p>
+    <p>
+      <strong>Only the Watch with you?</strong> Fresh setup needs the Bee iOS
+      app, pairing a Watch or Bee device, and Bee’s in-app Developer Mode before
+      CLI login. If the Watch is already set up and signed in, a Wi-Fi/cellular
+      capture trial may be possible, but official sources do not establish
+      independent Watch-only operation. Phone proximity is neither confirmed
+      required nor confirmed unnecessary. Without the iPhone now, check the
+      existing Watch app/account/connectivity; do not reset it or assume fresh
+      setup can finish.
+    </p>
+    <h2>First test</h2>
+    <p>
+      1. Open http://127.0.0.1:8767 <strong>on this Mac</strong> and keep it
+      awake. This address does not connect your iPhone to the Mac. If the app is
+      stopped, complete the review-and-start commands below before opening it.
+    </p>
+    <p>
+      2. For fresh setup, install/open Bee on the paired iPhone and Watch and
+      follow its onboarding yourself. If already signed in on the Watch but the
+      iPhone is absent, try only its existing capture controls on available
+      Wi-Fi/cellular; continue only if actual processed data becomes accessible.
+      Otherwise wait for the paired iPhone.
+    </p>
+    <p>
+      3. In Bee on iPhone: <strong>Settings → Version → tap five times</strong>.
+      Then run the commands below on this Mac and approve Bee’s login yourself
+      when prompted:
+    </p>
+    <pre><code>cd $HOME/Documents/Codex/2026-10-20/task-6
+./node_modules/.bin/bee login
+./node_modules/.bin/bee status
+# Review ~/.codex/AGENTS.md yourself; acknowledge only if you approve it.
+npm run review-guidance -- --acknowledge
+npm run readiness
+npm start</code></pre>
+    <p>
+      Run the acknowledgment only after your own review. It does not approve
+      sharing a recording. Start the app afterward; if it was already running,
+      stop its Terminal process with Ctrl-C and restart it after acknowledgment.
+      Login waits for your approval, so run it when present.
+    </p>
+    <p>
+      4. Record the full harmless request below (92 words) in Bee on your Watch,
+      then stop. Wait for the actual processed transcript/completion in Bee or
+      the selected conversation read. A recording indicator or temporary live
+      transcript alone is not success. Short conversations below roughly 50
+      words can disappear instead of completing; the longer sample reduces that
+      risk but does not guarantee processing.
+    </p>
+    <blockquote>
+      Prepare a private forty-five minute beginner workshop plan about keeping
+      houseplants alive. The audience has never cared for plants before. Include
+      a welcoming introduction, simple explanations of light and watering, one
+      practical activity using an imaginary plant, and a short checklist
+      participants can keep. Reserve a few minutes for questions at the end. Use
+      ordinary household examples and avoid recommending purchases. Keep all
+      preparation local and private. Do not send invitations, contact anyone,
+      book a room, buy supplies, or publish anything. Ask me if an important
+      detail is missing before assuming it.
+    </blockquote>
+    <p>
+      5. In our Mac app, connect the existing Codex connection under Connections
+      if needed. Under Bee actions, choose the demo conversation, inspect the
+      displayed source, enter “Prepare this workshop plan and checklist; keep
+      all exclusions,” and click
+      <strong>Review a task from this context</strong>. Approve the displayed
+      GPT-6 Luna context-sharing consent only if you agree. Leave Follow off for
+      this first test.
+    </p>
+    <p>
+      6. Inspect the plan/checklist and answer any clarification. Reply “Make it
+      30 minutes; keep the beginner audience and exclusions” to check
+      correction. The full checks below cover pause, cancel and restart.
+    </p>
+    <h2>Full setup, checks and troubleshooting</h2>
+    <details>
+      <summary>Before you begin: scope and device status</summary>
+      <p>
+        Offline prerequisites pass; real Bee login, Watch capture/processing and
+        device latency remain unverified. You do not need Xcode or a cable to
+        run our code on the Watch: the existing Bee Watch app records context,
+        and the Mac runs our action layer. Phone-sized screenshots so far are
+        browser viewport checks, not physical iPhone/Watch tests.
+      </p>
+    </details>
+    <details>
+      <summary>1. Keep the local app running</summary>
+      <p>
+        On this Mac, open http://127.0.0.1:8767. If unavailable, run in
+        Terminal:
+      </p>
+      <pre><code>cd $HOME/Documents/Codex/2026-10-20/task-6
+# Review and acknowledge global guidance first, only if you approve it.
+npm run review-guidance -- --acknowledge
+npm run readiness
+npm start</code></pre>
+      <p>
+        Node 24+ is required. Exact installed dependencies are @beeai/cli 0.8.0
+        and Effect 4.0.5; the existing Codex CLI is used for GPT-6 Luna.
+        Readiness is synthetic/offline: zero account/model calls, real macOS
+        sandbox test execution. Its prepared-for-connection-test status does not mean verified end-to-end. The newer version of the known PATH or ~/.local/bin/codex installation is selected automatically; CODEX_BIN remains an explicit override. A failed preflight is a blocker to diagnose, not
+        permission to install unrelated software. If the port is already in use,
+        open the existing app; do not start a second worker. Keep this Mac awake
+        and Terminal running. No system startup service is installed.
+      </p>
+      <p>
+        The URL is Mac loopback. It will not open this Mac&#x27;s app from
+        Safari on your iPhone. Use the Mac review surface for this first Watch
+        test; phone-to-Mac networking/authentication is not configured or
+        verified.
+      </p>
+    </details>
+    <details>
+      <summary>2. Prepare Bee on iPhone and Watch</summary>
+      <p>
+        Install/update the official Bee app on the paired iPhone. Apple&#x27;s
+        documented installation path is the iPhone Watch app → My Watch →
+        Available Apps → Bee → Install, when Bee is listed; or install an
+        available compatible Watch app through the Watch App Store. Open Bee on
+        both devices and follow its own account/onboarding and recording
+        permission prompts yourself. Do not accept a paid upgrade just for this
+        test.
+      </p>
+      <p>
+        In <strong>Bee on iPhone</strong>, open Settings → Version and tap
+        Version <strong>five times</strong>. This is Bee&#x27;s in-app Developer
+        Mode, not Apple&#x27;s OS Developer Mode, Xcode signing or a Watch
+        developer certificate.
+      </p>
+      <p>
+        The official listing confirms Apple Watch support. The exact current Bee
+        Watch recording buttons and transfer UI have not been physically
+        observed or established by an accessible official Watch-specific guide.
+        Use the installed app&#x27;s visible recording controls/onboarding;
+        confirm its recording indicator and stop it after the short sample. If
+        Bee is absent/incompatible or capture cannot start, record that exact
+        blocker. Do not substitute iPhone capture and call it Watch evidence.
+      </p>
+    </details>
+    <details>
+      <summary>3. Connect Bee yourself, when present</summary>
+      <p>Only when you are ready to approve the login, run:</p>
+      <pre><code>cd $HOME/Documents/Codex/2026-10-20/task-6
+./node_modules/.bin/bee login
+./node_modules/.bin/bee status</code></pre>
+      <p>
+        Follow Bee&#x27;s displayed approval instructions yourself. Login may
+        wait about five minutes for approval; do not create the session hours in
+        advance. Do not paste credentials into chat or record the login screen.
+        If login fails, update Bee, repeat the five taps and retry
+        intentionally. Do not connect calendar/mail or import your whole
+        history.
+      </p>
+      <p>
+        In our app → Connections, choose
+        <strong>Use existing Codex connection</strong>. GPT-6 Luna is the only
+        fallback model; no silent downgrade. Bee&#x27;s built-in
+        agent/custom-tool support is not verified. This test uses documented Bee
+        context plus our local Codex-backed action layer.
+      </p>
+    </details>
+    <details>
+      <summary>4. Record one non-private task</summary>
+      <p>
+        In a quiet space with no bystanders, record this through Bee on the
+        Watch, then stop recording:
+      </p>
+      <blockquote>
+        Prepare a private forty-five minute beginner workshop plan about keeping
+        houseplants alive. The audience has never cared for plants before.
+        Include a welcoming introduction, simple explanations of light and
+        watering, one practical activity using an imaginary plant, and a short
+        checklist participants can keep. Reserve a few minutes for questions at
+        the end. Use ordinary household examples and avoid recommending
+        purchases. Keep all preparation local and private. Do not send
+        invitations, contact anyone, book a room, buy supplies, or publish
+        anything. Ask me if an important detail is missing before assuming it.
+      </blockquote>
+      <p>
+        Check this exact conversation’s processed transcript and completion in
+        Bee on iPhone when available, or the documented selected CLI/API
+        conversation read. A CAPTURING entry, recording light or transient
+        realtime transcript is not completion. Official Amazon/Bee clarification
+        says conversations below roughly 50 words can disappear rather than
+        complete. Use the full longer sample; do not shorten it to a one-line
+        command. Processing/sync may take time and the sample does not guarantee
+        success. Note capture end and processed availability times. An
+        already-signed-in Watch on Wi-Fi/cellular has not been verified to
+        process independently without the paired phone; if no completed data is
+        accessible, record the blocker and retry when the phone is available.
+      </p>
+    </details>
+    <details>
+      <summary>5. Select only that conversation</summary>
+      <p>
+        In our app → Bee actions, click
+        <strong>Choose a recent Bee conversation</strong>. Select the demo
+        conversation by title/time, then read it. This chooser fetches five
+        recent metadata rows; it does not import all transcripts. If you prefer
+        not to retrieve even that metadata, use the known numeric conversation
+        ID option. Check the displayed excerpt before continuing. If it is
+        unrelated, do not select it.
+      </p>
+      <p>
+        In “What should this become?”, enter: “Prepare the workshop plan and
+        checklist from this request. Keep the no-send, no-booking, no-purchase
+        and no-publication constraints.” Leave Follow off for the first trial.
+        Click <strong>Review a task from this context</strong>, read the GPT-6
+        Luna context-sharing consent, and continue only if you approve sending
+        the displayed selected context and request to OpenAI through Codex.
+        Connecting Codex alone is not this data-sharing consent.
+      </p>
+      <p>
+        Expected: a real Bee source label (not simulated), durable task, any
+        clarification, then a private plan/checklist ready for review. Safe
+        private preparation does not require a popup for every step. External
+        sending/booking/publishing is unavailable and must not succeed. A
+        model-generated plan is prepared output, not proof the workshop
+        happened.
+      </p>
+    </details>
+    <details>
+      <summary>6. Correct, pause, cancel and restart</summary>
+      <p>
+        Reply: “Make it 30 minutes instead. Keep the exclusions and beginner
+        audience.” Verify the corrected schedule fits 30 minutes and the
+        original exclusions remain. If a checklist is present, mark one item
+        yourself; it should retain owner progress across refresh/restart.
+      </p>
+      <p>
+        Pause the task and check the visible paused state. Resume prepares a
+        fresh proposal where needed; old approval is not reused. Use a separate
+        trial for Cancel: canceled work must stay canceled and should not be
+        revived by reconnecting context.
+      </p>
+      <p>
+        To test restart, keep a non-canceled task, stop the app with Ctrl-C in
+        its Terminal, then run <code>npm start</code> from the same folder and
+        refresh the URL. Task/history/owner progress should persist. If Bee
+        context cannot be refreshed, source-dependent work should say
+        waiting-for-source, not claim progress. Uncertain effects must not
+        replay. Restart does not make an off/sleeping Mac work.
+      </p>
+    </details>
+    <details>
+      <summary>7. Optional selected follow/reconnect trial</summary>
+      <p>
+        Only after the first trial works, enable Follow when selecting the same
+        chosen conversation and read its expanded sharing consent: 24 hours, up
+        to six proposals, Mac running. Then start the Bee stream in Connections.
+        Add a short harmless correction in that same conversation only if Bee
+        actually keeps it in the same selected conversation; a different
+        conversation is intentionally excluded. Verify the displayed
+        conversation identity rather than assuming a recording appends to an old
+        session.
+      </p>
+      <p>
+        Follow may prepare bounded work under your stated instruction; ambient
+        speech alone is never owner authorization. Stop following to revoke the
+        scope. Stop stream prevents reconnect. During an outage, missed live
+        events are not guaranteed to replay; selected snapshot refresh supplies
+        recovered context, not new execution authority. Background health shows
+        selected refresh/reconnect state. Do not delete private real
+        conversations merely to test a failure case; deletion/cross-source crash
+        cases already have automated regressions.
+      </p>
+    </details>
+    <details>
+      <summary>Troubleshooting and evidence</summary>
+      <p>
+        If Connections reports unreviewed or changed global guidance, review
+        ~/.codex/AGENTS.md yourself, then explicitly run npm run review-guidance
+        -- --acknowledge only if you approve it. This is separate from
+        context-sharing consent. If PATH selects an older Codex without Luna,
+        use the installed newer binary explicitly with
+        CODEX_BIN="$HOME/.local/bin/codex" npm start; never downgrade the model.
+      </p>
+      <p>
+        - <strong>No processed conversation:</strong> inspect actual processed
+        transcript/completion, not the recording indicator. Below roughly 50
+        words may be deleted; use the full sample. If already signed in on Watch
+        without the phone, connectivity alone does not prove independent
+        processing. Wait for the paired iPhone if completion cannot be verified.
+        No guessed buttons, raw audio or Watch APIs are used.
+      </p>
+      <p>
+        - <strong>Bee login required/403:</strong> verify Bee Developer
+        Mode/login. A native-thread <code>test_user_required</code> error is
+        preview eligibility, not a reason to replace the public context path or
+        buy a plan.
+      </p>
+      <p>
+        - <strong>No recent match:</strong> only five metadata rows are listed;
+        use the known numeric ID or a fresh isolated demo. Never broaden to all
+        personal data by default.
+      </p>
+      <p>
+        - <strong>Source too large/unprocessed:</strong> use a shorter processed
+        demo conversation. Do not bypass bounds by exporting your whole history.
+      </p>
+      <p>
+        - <strong>Codex/model unavailable:</strong> inspect Connections. Keep
+        GPT-6 Luna; do not use private tokens or silently substitute another
+        model.
+      </p>
+      <p>
+        - <strong>Waiting for source:</strong> restore Bee connectivity and wait
+        for selected refresh (up to one minute cycle, bounded reads). Changed
+        source revokes old plans; expired approval requires new review.
+      </p>
+      <p>
+        - <strong>Cancel was late:</strong> distinguish completed local
+        preparation from an actually canceled attempt; never claim canceled work
+        was never run if evidence shows otherwise.
+      </p>
+      <p>
+        Record a sanitized trace: real source provenance, selected
+        request/consent, clarification/correction, visible output, restart and
+        cancellation outcome. Keep account screens, private unrelated context
+        and tokens out of screenshots/video. Fixture tests and phone viewports
+        do not establish device capture or hackathon eligibility. External
+        adapters, broad ranking/all-domain verification and supervised system
+        launch remain unfinished.
+      </p>
+    </details>
+    <details>
+      <summary>Verified official references</summary>
+      <p>- Bee Developer Mode: https://docs.bee.computer/docs/developer-mode</p>
+      <p>- Bee login/setup: https://docs.bee.computer/docs</p>
+      <p>- Bee CLI: https://docs.bee.computer/docs/cli</p>
+      <p>
+        - Bee realtime/recovery: https://docs.bee.computer/docs/realtime and
+        https://docs.bee.computer/docs/sync
+      </p>
+      <p>
+        - Bee App Store listing:
+        https://apps.apple.com/us/app/bee-your-personal-ai/id6480349491
+      </p>
+      <p>
+        - Apple Watch app installation:
+        https://support.apple.com/guide/watch/get-more-apps-apd99e3c6a68/watchos
+      </p>
+      <p>
+        - Official Amazon/Bee processing and pairing clarification:
+        https://amazonappdev2026.devpost.com/forum_topics/45111-bee-developer-connect
+      </p>
+    </details>
+  </main>
+</html>

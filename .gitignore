@@ -1,0 +1,41 @@
+# Dependencies, local state and credentials must never be committed.
+node_modules/
+.local/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.db
+*.db-*
+*.pem
+*.key
+*.p12
+*.pfx
+auth.json
+credentials.json
+.DS_Store
+
+# Preserve locally; exclude private/review/generated material from submission.
+evidence/
+.snapshots/
+design/
+upstream/
+CHECKPOINT.md
+SUBMISSION.md
+docs/
+scripts/evaluate-private-preparation.mjs
+scripts/live-synthetic-check.mjs
+dist/
+coverage/
+test-results/
+playwright-report/
+*.log
+*.jsonl
+*.tar.gz
+*.tgz
+*.zip
+__pycache__/
+
+# Product assets under public/ and audited fixtures are intentionally retained.

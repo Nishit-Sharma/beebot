@@ -1,0 +1,2 @@
+{"utterance":{"text":"When a reminder is due exactly now, show it as due.","speaker":"speaker_1"},"conversation_uuid":"fixture-conversation-1"}
+{"utterance":{"text":"Actually, a completed reminder must never be due.","speaker":"speaker_1"},"conversation_uuid":"fixture-conversation-1"}
